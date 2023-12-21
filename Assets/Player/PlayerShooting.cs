@@ -21,7 +21,7 @@ public class PlayerShooting: MonoBehaviour {
   }
 
   private void Shoot() {
-    GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+    GameObject projectile = Instantiate(projectilePrefab, this.firePoint.position, firePoint.rotation);
 
     Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 

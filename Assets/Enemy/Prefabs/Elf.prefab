@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1407891561961701285}
   - component: {fileID: 1407891561961701290}
   - component: {fileID: 1407891561961701291}
-  - component: {fileID: 1407891561961701287}
   - component: {fileID: 1407891561961701286}
   m_Layer: 6
   m_Name: Elf
@@ -122,7 +121,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -155,7 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 97ad72bbf89c13b41b80ff8bc7984cbb, type: 2}
-  enemySprite: {fileID: 11400000, guid: bc4b539f83da45a48ae226d8ca68479c, type: 2}
 --- !u!114 &1407891561961701291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,19 +169,6 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: 97ad72bbf89c13b41b80ff8bc7984cbb, type: 2}
   movement: {x: 0, y: 0}
   velocity: 0
---- !u!114 &1407891561961701287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1407891561961701295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb7607173827014c8a29e896f8aec37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!95 &1407891561961701286
 Animator:
   serializedVersion: 5
