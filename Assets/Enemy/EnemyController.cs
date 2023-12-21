@@ -17,7 +17,10 @@ public class EnemyController: MonoBehaviour {
 
   private float dyingTime;
 
+  public bool isDying;
+
   void Start() {
+    this.isDying = false;
     this.dyingTime = 0.6f;
     this.enemyDisplay = this.GetComponent<EnemyDisplay>();
     this.enemyMovement = this.GetComponent<EnemyMovement>();
@@ -40,7 +43,13 @@ public class EnemyController: MonoBehaviour {
 
   void OnTriggerEnter2D(Collider2D collider) {
     this.transform.localScale = new Vector3(0.35f, 0.35f, 1);
-    this.animator.SetBool("IsDying", true);
+    this.isDying = true;
+    this.animator.SetBool("IsDying", this.isDying);
+
+    this.GetComponent<CircleCollider2D>().enabled = false;
+
+    Debug.Log($"[EnemyController#OnTriggerEnter2D] {this.gameObject.name}");
+    this.pickUpEvent.e.Invoke();
 
     Destroy(this.gameObject, this.dyingTime);
   }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Tilemaps;
 
 public class EnemySpawnerController: MonoBehaviour {
 
@@ -23,6 +24,10 @@ public class EnemySpawnerController: MonoBehaviour {
 
   private Bounds cameraBounds;
 
+  public Tilemap tilemap;
+
+  private Bounds tilemapWorldBounds;
+
   // public Vector3 minPosition;
   // public Vector3 maxPosition;
 
@@ -37,6 +42,13 @@ public class EnemySpawnerController: MonoBehaviour {
         this.cam.orthographicSize * 2,
         0
       )
+    );
+
+    Bounds tilemapLocalBounds = this.tilemap.localBounds;
+    this.tilemapWorldBounds = new Bounds();
+    this.tilemapWorldBounds.SetMinMax(
+      this.tilemap.transform.TransformPoint(tilemapLocalBounds.min),
+      this.tilemap.transform.TransformPoint(tilemapLocalBounds.max)
     );
 
     Assert.IsNotNull(this.prefabToSpawn);
@@ -62,15 +74,22 @@ public class EnemySpawnerController: MonoBehaviour {
       );
 
       go.name = $"Enemy-{i}";
+      go.GetComponent<OrthographicTilemapPositionClamper>().tilemap = this.tilemap;
       // go.GetComponent<ResourceDisplay>().resource = this.GetRandomResourceObject();
     }
   }
 
   private Vector3 GetRandomPosition() {
+    // return new Vector3(
+    //   Random.Range(this.cameraBounds.min.x, this.cameraBounds.max.x),
+    //   Random.Range(this.cameraBounds.min.y, this.cameraBounds.max.y),
+    //   Random.Range(this.cameraBounds.min.z, this.cameraBounds.max.z)
+    // );
+
     return new Vector3(
-      Random.Range(this.cameraBounds.min.x, this.cameraBounds.max.x),
-      Random.Range(this.cameraBounds.min.y, this.cameraBounds.max.y),
-      Random.Range(this.cameraBounds.min.z, this.cameraBounds.max.z)
+      Random.Range(this.tilemapWorldBounds.min.x, this.tilemapWorldBounds.max.x),
+      Random.Range(this.tilemapWorldBounds.min.y, this.tilemapWorldBounds.max.y),
+      Random.Range(this.tilemapWorldBounds.min.z, this.tilemapWorldBounds.max.z)
     );
   }
 
