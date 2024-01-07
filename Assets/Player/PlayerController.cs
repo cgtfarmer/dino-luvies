@@ -55,14 +55,14 @@ public class PlayerController: MonoBehaviour {
     //   Input.GetAxisRaw("Vertical")
     // );
 
-    if (Input.GetKeyDown(KeyCode.Space)) {
-      this.Interact();
-    }
+    // if (Input.GetKeyDown(KeyCode.Space)) {
+    //   this.Interact();
+    // }
   }
 
-  private void Interact() {
-    Debug.Log("[PlayerController#Interact]");
+  // private void Interact() {
+  //   Debug.Log("[PlayerController#Interact]");
 
-    this.playerAbilityManager.Interact();
-  }
+  //   this.playerAbilityManager.Interact();
+  // }
 }
